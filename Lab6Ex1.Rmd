@@ -1,0 +1,24 @@
+---
+title: "Lab6"
+author: "Ritaj Sanad"
+output: word_document
+---
+
+## Student: Ritaj Sanad
+## ID: 1122656422
+
+### Exercise 1: Dimensions and description of the Denny’s dataset
+
+library(tidyverse)
+library(dsbox)
+
+# Load the Denny's data
+dennys <- read_csv("dennys.csv")
+
+# Get dimensions of the Denny's dataset
+dennys_dim <- dim(dennys)
+
+# Print results
+cat("The 'dennys' dataset has", dennys_dim[1], "rows and", dennys_dim[2], "columns.\n")
+cat("Each row represents location information about a Denny’s restaurant.\n")
+cat("The variables are: longitude, latitude, city, state, address, and zip.\n")

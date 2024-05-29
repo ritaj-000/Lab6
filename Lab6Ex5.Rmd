@@ -1,0 +1,54 @@
+---
+title: "Lab6"
+author: "Ritaj Sanad"
+output: word_document
+---
+
+## Student: Ritaj Sanad
+## ID: 1122656422
+
+# Load necessary libraries
+library(tidyverse)
+library(dsbox)
+
+# Load the Denny's data
+dennys <- read_csv("dennys.csv")
+# Load the La Quinta's data
+laquinta <- read_csv("laquinta.csv")
+# Load the states data
+states <- read_csv("states.csv")
+
+# Calculate locations per thousand square miles for Denny’s
+dennys_density <- dn %>%
+  count(state) %>%
+  inner_join(states, by = c("state" = "abbreviation")) %>%
+  mutate(dennys_per_thousand_sq_miles = n / (area / 1000))
+
+# Calculate locations per thousand square miles for La Quinta’s
+laquinta_density <- lq %>%
+  count(state) %>%
+  inner_join(states, by = c("state" = "abbreviation")) %>%
+  mutate(laquinta_per_thousand_sq_miles = n / (area / 1000))
+
+# Print results
+cat("Denny’s locations per thousand square miles:\n")
+print(dennys_density)
+
+cat("La Quinta’s locations per thousand square miles:\n")
+print(laquinta_density)
+# Add an establishment variable
+dn <- dn %>%
+  mutate(establishment = "Denny's")
+
+lq <- lq %>%
+  mutate(establishment = "La Quinta")
+
+# Combine the datasets
+dn_lq <- bind_rows(dn, lq)
+
+# Create a scatter plot of the locations
+ggplot(dn_lq, mapping = aes(x = longitude, y = latitude, color = establishment)) + geom_point() + labs(title = "Locations of Denny's and La Quinta",
+x = "Longitude",
+y = "Latitude",
+color = "Establishment")
+

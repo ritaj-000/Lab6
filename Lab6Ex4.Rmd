@@ -1,0 +1,54 @@
+---
+title: "Lab6"
+author: "Ritaj Sanad"
+output: word_document
+---
+
+## Student: Ritaj Sanad
+## ID: 1122656422
+
+# Load necessary libraries
+library(tidyverse)
+library(dsbox)
+
+# Load the Denny's data
+dennys <- read_csv("dennys.csv")
+# Load the La Quinta's data
+laquinta <- read_csv("laquinta.csv")
+# Find the states with the most Denny's locations
+most_dennys <- dn %>%
+  count(state) %>%
+  arrange(desc(n)) %>%
+  head(10)
+
+# Print results
+cat("States with the most Denny’s locations:\n")
+print(most_dennys)
+
+# Find the states with the fewest Denny's locations
+fewest_dennys <- dn %>%
+  count(state) %>%
+  arrange(n) %>%
+  head(10)
+
+# Print results
+cat("States with the fewest Denny’s locations:\n")
+print(fewest_dennys)
+# Find the states with the most La Quinta locations
+most_laquinta <- lq %>%
+  count(state) %>%
+  arrange(desc(n)) %>%
+  head(10)
+
+# Print results
+cat("States with the most La Quinta locations:\n")
+print(most_laquinta)
+# Find the states with the fewest La Quinta locations
+fewest_laquinta <- lq %>%
+  count(state) %>%
+  arrange(n) %>%
+  head(10)
+
+# Print results
+cat("States with the fewest La Quinta locations:\n")
+print(fewest_laquinta)

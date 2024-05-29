@@ -1,0 +1,23 @@
+---
+title: "Lab6"
+author: "Ritaj Sanad"
+output: word_document
+---
+
+## Student: Ritaj Sanad
+## ID: 1122656422
+
+# Load necessary libraries
+library(tidyverse)
+library(dsbox)
+
+# Load the La Quinta's data
+laquinta <- read_csv("laquinta.csv")
+
+# Get dimensions of the La Quinta's dataset
+laquinta_dim <- dim(laquinta)
+
+# Print results
+cat("The 'laquinta' dataset has", laquinta_dim[1], "rows and", laquinta_dim[2], "columns.\n")
+cat("Each row represents location information about a La Quinta’s hotel.\n")
+cat("The variables are: longitude, latitude, city, state, address, and zip.\n")

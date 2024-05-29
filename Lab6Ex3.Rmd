@@ -1,0 +1,27 @@
+---
+title: "Lab6"
+author: "Ritaj Sanad"
+output: word_document
+---
+
+## Student: Ritaj Sanad
+## ID: 1122656422
+
+# Load necessary libraries
+library(tidyverse)
+library(dsbox)
+
+# Load the Denny's data
+dennys <- read_csv("dennys.csv")
+# Load the La Quinta's data
+laquinta <- read_csv("laquinta.csv")
+# Add a country variable to Denny's data
+dn <- dennys %>%
+mutate(country = "United States")
+
+# Add a country variable to La Quinta's data
+lq <- laquinta %>%
+  mutate(country = "United States")
+# Print a few rows to verify
+head(dn)
+head(lq)
